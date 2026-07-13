@@ -1,0 +1,132 @@
+@ConstructoraPages_HostAddress = http://localhost:5156
+
+GET {{ConstructoraPages_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###1. Crear un cliente
+POST http://localhost:5156/Cliente
+Content-Type: application/json
+
+{
+  "nombre": "María",
+  "apellido": "González",
+  "cedula": "42315678",
+  "telefono": "099234567"
+}
+### 2. Obtener todos los clientes
+GET http://localhost:5156/Cliente
+
+### 3. Crear un empleado - Cargo: Ingeniero
+POST http://localhost:5156/Empleado
+Content-Type: application/json
+
+{
+  "nombre": "Roberto Silva",
+  "cedula": "38976543",
+  "telefono": "098765432",
+  "cargo": 4,
+  "salario": 85000
+}
+
+### 4. Crear un contratista - Especialidad: Electricista
+POST http://localhost:5156/Contratista
+Content-Type: application/json
+
+{
+  "nombre": "Fernando López",
+  "cedula": "35124789",
+  "especialidad": 0,
+  "telefono": "097123456"
+}
+
+### 5. Crear un proveedor
+POST http://localhost:5156/Proveedor
+Content-Type: application/json
+
+{
+  "nombre": "Materiales del Este SA",
+  "telefono": "26001234",
+  "direccion": "Ruta 8 km 15, Canelones"
+}
+
+### 6. Crear un material
+POST http://localhost:5156/Material
+Content-Type: application/json
+
+{
+  "nombre": "Cemento Portland 25kg",
+  "descripcion": "Bolsa de cemento para construcción",
+  "stock": 500,
+  "precioUnitario": 380.50
+}
+
+### 7. Crear una obra - Tipo: Residencial, Intervención: ObraNueva, Estado: EnPlanificacion
+POST http://localhost:5156/Obra
+Content-Type: application/json
+
+{
+  "nombre": "Edificio Los Aromos",
+  "direccion": "Bvar. Artigas 2450, Montevideo",
+  "tipoObra": 0,
+  "intervencionObra": 0,
+  "estado": 1,
+  "fechaInicio": "2026-08-01",
+  "fechaFinal": "2027-06-30",
+  "presupuesto": 12500000,
+  "costoActual": 0
+}
+
+### 8. Obtener todas las obras
+GET http://localhost:5156/Obra
+
+### 9. Crear una etapa de obra (usá el id de obra que te devolvió el paso 7)
+POST http://localhost:5156/EtapaObra
+Content-Type: application/json
+
+{
+  "nombre": "Excavación y cimientos",
+  "descripcion": "Movimiento de suelo y fundación",
+  "estado": 0,
+  "fechaInicio": "2026-08-01",
+  "fechaFin": "2026-09-15",
+  "idObra": 1
+}
+
+### 10. Crear un gasto asociado a la obra - Tipo: Material
+POST http://localhost:5156/Gasto
+Content-Type: application/json
+
+{
+  "descripcion": "Compra de cemento y arena",
+  "fecha": "2026-08-05",
+  "monto": 45000,
+  "tipo": 0,
+  "idObra": 1
+}
+
+### 11. Probar validación: nombre vacío (debería dar 400)
+POST http://localhost:5156/Cliente
+Content-Type: application/json
+
+{
+  "nombre": "",
+  "apellido": "González",
+  "cedula": "11111111",
+  "telefono": "099111111"
+}
+
+### 12. Probar validación: fecha fin anterior a fecha inicio (debería dar 400)
+POST http://localhost:5156/Obra
+Content-Type: application/json
+
+{
+  "nombre": "Obra con fechas mal",
+  "direccion": "Calle Falsa 123",
+  "tipoObra": 0,
+  "intervencionObra": 0,
+  "estado": 0,
+  "fechaInicio": "2026-12-01",
+  "fechaFinal": "2026-01-01",
+  "presupuesto": 100000,
+  "costoActual": 0
+}

@@ -1,0 +1,75 @@
+:root {
+  --color-fondo: #f7f5f0;
+  --color-superficie: #ffffff;
+  --color-borde: #e0dcd0;
+  --color-texto: #262420;
+  --color-texto-suave: #6b6558;
+  --color-marca: #2f5233;
+  --color-marca-oscuro: #1e3a21;
+  --color-acento: #c17f2c;
+  --color-peligro: #a8402f;
+  --radio: 6px;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 0.25rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: var(--color-superficie);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+th {
+  text-align: left;
+  background-color: var(--color-fondo);
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-borde);
+  font-size: 0.9rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select {
+  font-family: inherit;
+}

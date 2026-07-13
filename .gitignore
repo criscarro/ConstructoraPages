@@ -1,0 +1,13 @@
+# Backend .NET
+**/bin/
+**/obj/
+**/appsettings.json
+**/appsettings.Development.json
+
+# Frontend Next.js
+**/node_modules/
+**/.next/
+
+# Varios
+*.user
+.vs/
